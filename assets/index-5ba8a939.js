@@ -1,0 +1,1 @@
+import{L as t,Y as o,f as c,s as _,y as n,W as a,X as d,j as r}from"./index-cab38002.js";const p={},i=e=>(a("data-v-7777c4b7"),e=e(),d(),e),u={class:"nested-menu1-3"},l=i(()=>r("div",{class:"nested-text"},"menu1-3",-1));function m(e,f){const s=o("RouterView");return c(),_("div",u,[l,n(s)])}const x=t(p,[["render",m],["__scopeId","data-v-7777c4b7"]]);export{x as default};
