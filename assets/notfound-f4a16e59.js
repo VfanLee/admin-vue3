@@ -1,1 +1,0 @@
-import{L as n,f as s,s as _,y as a,w as r,V as c,R as d}from"./index-cab38002.js";const f={},u={class:"error-page"};function l(t,e){const o=c;return s(),_("div",u,[a(o,{onClick:e[0]||(e[0]=p=>t.$router.push({path:"/"}))},{default:r(()=>[d("返回首页")]),_:1})])}const m=n(f,[["render",l],["__scopeId","data-v-326de5fb"]]);export{m as default};
