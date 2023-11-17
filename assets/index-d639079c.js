@@ -1,0 +1,1 @@
+import{L as t,Y as o,f as c,s as a,y as _,W as n,X as d,j as r}from"./index-348c86e0.js";const p={},i=e=>(n("data-v-9494de8a"),e=e(),d(),e),u={class:"nested-menu1-2-2"},l=i(()=>r("div",{class:"nested-text"},"menu1-2-2",-1));function m(e,f){const s=o("RouterView");return c(),a("div",u,[l,_(s)])}const x=t(p,[["render",m],["__scopeId","data-v-9494de8a"]]);export{x as default};
