@@ -1,0 +1,1 @@
+import{L as e,f as t,s as a,S as c,F as s,j as n}from"./index-CQQPOUkP.js";const r={},o=n("input",{type:"text",value:"权限指令"},null,-1);function _(l,d){return t(),a(s,null,[c(" 权限指令 "),o],64)}const i=e(r,[["render",_]]);export{i as default};

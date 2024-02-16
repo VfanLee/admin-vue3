@@ -1,0 +1,1 @@
+import{L as s,f as n,s as a,y as r,w as c,W as _,S as d}from"./index-CQQPOUkP.js";const f={},l={class:"error-page"};function p(t,e){const o=_;return n(),a("div",l,[r(o,{onClick:e[0]||(e[0]=u=>t.$router.push({path:"/"}))},{default:c(()=>[d("返回首页")]),_:1})])}const m=s(f,[["render",p],["__scopeId","data-v-326de5fb"]]);export{m as default};
