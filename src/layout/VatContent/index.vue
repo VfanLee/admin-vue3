@@ -1,10 +1,10 @@
 <script setup>
-import PageHeader from './PageHeader/index.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
 </script>
 
 <template>
   <main class="vat-content">
-    <PageHeader />
+    <Breadcrumb />
     <RouterView></RouterView>
   </main>
 </template>

@@ -1,7 +1,8 @@
-<script setup></script>
+<script setup>
+import PageHeader from '@/components/PageHeader/index.vue'
+</script>
 
 <template>
-  <p>Dashboard</p>
+  <PageHeader title="Dashboard Title" description="Dashboard Description" />
+  <p>Dashboard Content</p>
 </template>
-
-<style lang="scss" scoped></style>

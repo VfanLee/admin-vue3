@@ -57,7 +57,7 @@ const login = async formEl => {
         </el-form-item>
 
         <el-form-item prop="username">
-          <el-input class="login__username" v-model="loginForm.username" placeholder="请输入用户名" autofocus @keyup.enter="login(loginFormRef)">
+          <el-input class="login__username" v-model="loginForm.username" placeholder="任意用户名" autofocus @keyup.enter="login(loginFormRef)">
             <template #prefix>
               <i class="fa-solid fa-user"></i>
             </template>

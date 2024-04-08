@@ -14,10 +14,9 @@ import components from './modules/components'
  * link: false                              外链标志
  * meta: {
           allowlist: true                   路由白名单，不登陆即可访问（默认为 false）
-          code: 'code'                      路由 code，根据后端路由表进行动态筛选（仅 asyncRoutes 支持）
           title: 'title'                    设置该路由在侧边栏和面包屑中展示的名字（建议设置）
           icon: 'svg-name'                  侧边栏中显示的图标
-          noCache: true                     如果设置为 true，则不会被 <KeepAlive> 缓存（默认为 false）
+          // noCache: true                     如果设置为 true，则不会被 <KeepAlive> 缓存（默认为 false）
           activeMenu: '/example/list'       当路由设置了该属性，则会高亮相对应的侧边栏
                                             这在某些场景非常有用，比如：一个文章的列表页路由为：/article/list
                                             点击文章进入文章详情页，这时候路由为 /article/1，但你想在侧边栏高亮文章列表的路由，就可以进行如下设置
@@ -25,7 +24,7 @@ import components from './modules/components'
         }
  */
 
-export const constantRoutes = [
+const routes = [
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),
@@ -63,49 +62,6 @@ export const constantRoutes = [
         }
       }
     ]
-  }
-]
-
-export const asyncRoutes = [
-  {
-    path: '/permission',
-    component: Layout,
-    name: 'Permission',
-    redirect: '/permission/page',
-    alwaysShow: true,
-    meta: {
-      title: 'permission',
-      icon: 'lock-solid',
-      code: 'permission'
-    },
-    children: [
-      {
-        path: 'page',
-        component: () => import('@/views/permission/page.vue'),
-        name: 'PagePermission',
-        meta: {
-          title: 'pagePermission',
-          code: 'pagePermission'
-        }
-      },
-      {
-        path: 'directive',
-        component: () => import('@/views/permission/directive.vue'),
-        name: 'DirectivePermission',
-        meta: {
-          title: 'directivePermission'
-        }
-      },
-      {
-        path: 'role',
-        component: () => import('@/views/permission/role.vue'),
-        name: 'RolePermission',
-        meta: {
-          title: 'rolePermission',
-          code: 'rolePermission'
-        }
-      }
-    ]
   },
 
   nested,
@@ -118,3 +74,5 @@ export const asyncRoutes = [
     hidden: true
   }
 ]
+
+export default routes

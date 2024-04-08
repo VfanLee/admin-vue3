@@ -9,7 +9,6 @@ import 'virtual:svg-icons-register'
 import App from './App.vue'
 
 import 'normalize.css'
-import './styles/theme/index.scss'
 import './styles/index.scss'
 
 const app = createApp(App)

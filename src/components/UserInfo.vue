@@ -7,7 +7,6 @@ const userStore = useUserStore()
 <template>
   <el-dropdown class="user-info" trigger="click" :popper-options="{ modifiers: [{ name: 'computeStyles', options: { adaptive: false } }] }">
     <div>
-      <!-- <img :src="userStore.userInfo.avatar" alt="avatar" /> -->
       <img src="@/assets/vite.svg" alt="avatar" />
       <span>{{ userStore.userInfo.name }}</span>
     </div>

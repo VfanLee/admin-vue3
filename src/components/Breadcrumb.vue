@@ -35,6 +35,7 @@ watch(
 .breadcrumb {
   display: flex;
   gap: 10px;
+  margin-block-end: 8px;
   i[class*='fa-'] {
     font-size: 12px;
   }
