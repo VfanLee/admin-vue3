@@ -1,6 +1,5 @@
 import Layout from '@/layout/index.vue'
 import nested from './modules/nested'
-import components from './modules/components'
 
 /**
  * 注意：仅当路由子项数量 >= 1时，子菜单才会显示
@@ -16,7 +15,6 @@ import components from './modules/components'
           allowlist: true                   路由白名单，不登陆即可访问（默认为 false）
           title: 'title'                    设置该路由在侧边栏和面包屑中展示的名字（建议设置）
           icon: 'svg-name'                  侧边栏中显示的图标
-          // noCache: true                     如果设置为 true，则不会被 <KeepAlive> 缓存（默认为 false）
           activeMenu: '/example/list'       当路由设置了该属性，则会高亮相对应的侧边栏
                                             这在某些场景非常有用，比如：一个文章的列表页路由为：/article/list
                                             点击文章进入文章详情页，这时候路由为 /article/1，但你想在侧边栏高亮文章列表的路由，就可以进行如下设置
@@ -30,7 +28,7 @@ const routes = [
     component: () => import('@/views/login/index.vue'),
     name: 'Login',
     meta: {
-      title: 'login',
+      title: '登录',
       allowlist: true
     },
     hidden: true
@@ -41,7 +39,7 @@ const routes = [
     component: () => import('@/views/error/notfound.vue'),
     name: 'Notfound',
     meta: {
-      title: 'Not Found',
+      title: '页面没找到',
       allowlist: true
     },
     hidden: true
@@ -57,7 +55,7 @@ const routes = [
         name: 'Dashboard',
         component: () => import('@/views/dashboard/index.vue'),
         meta: {
-          title: 'Dashboard',
+          title: '工作台',
           icon: 'gauge-solid'
         }
       }
@@ -65,7 +63,6 @@ const routes = [
   },
 
   nested,
-  components,
 
   // 添加 404 路由
   {

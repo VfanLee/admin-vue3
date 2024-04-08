@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import i18n from './i18n'
 import pinia from './stores'
 import router from './router'
 import './router/permission'
@@ -11,9 +10,12 @@ import App from './App.vue'
 import 'normalize.css'
 import './styles/index.scss'
 
+import PageHeader from '@/components/PageHeader.vue'
+
 const app = createApp(App)
 
-app.use(i18n)
+app.component(PageHeader.name, PageHeader)
+
 app.use(pinia)
 app.use(router)
 

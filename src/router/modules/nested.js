@@ -6,7 +6,7 @@ export default {
   name: 'nested',
   redirect: '/nested/menu1/menu1-1',
   meta: {
-    title: 'nested',
+    title: '嵌套示例',
     icon: 'sitemap-solid'
   },
   children: [
@@ -15,14 +15,14 @@ export default {
       component: () => import('@/views/nested/menu1/index.vue'),
       redirect: '/nested/menu1/menu1-1',
       meta: {
-        title: 'menu1'
+        title: '菜单 1'
       },
       children: [
         {
           path: 'menu1-1',
           component: () => import('@/views/nested/menu1/menu1-1/index.vue'),
           meta: {
-            title: 'menu1-1'
+            title: '菜单 1-1'
           }
         },
         {
@@ -30,21 +30,21 @@ export default {
           component: () => import('@/views/nested/menu1/menu1-2/index.vue'),
           redirect: '/nested/menu1/menu1-2/menu1-2-1',
           meta: {
-            title: 'menu1-2'
+            title: '菜单 1-2'
           },
           children: [
             {
               path: 'menu1-2-1',
               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1/index.vue'),
               meta: {
-                title: 'menu1-2-1'
+                title: '菜单 1-2-1'
               }
             },
             {
               path: 'menu1-2-2',
               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2/index.vue'),
               meta: {
-                title: 'menu1-2-2'
+                title: '菜单 1-2-2'
               }
             }
           ]
@@ -53,7 +53,7 @@ export default {
           path: 'menu1-3',
           component: () => import('@/views/nested/menu1/menu1-3/index.vue'),
           meta: {
-            title: 'menu1-3'
+            title: '菜单 1-3'
           }
         }
       ]
@@ -62,7 +62,7 @@ export default {
       path: 'menu2',
       component: () => import('@/views/nested/menu2/index.vue'),
       meta: {
-        title: 'menu2'
+        title: '菜单 2'
       }
     }
   ]

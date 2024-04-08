@@ -14,7 +14,6 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@tinymce/tinymce-vue": "^5.1.1",
     "axios": "^1.6.0",
     "element-plus": "^2.4.2",
     "js-cookie": "^3.0.5",
@@ -23,7 +22,6 @@
     "path-browserify": "^1.0.1",
     "pinia": "^2.1.7",
     "vue": "^3.3.4",
-    "vue-i18n": "^9.6.5",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {

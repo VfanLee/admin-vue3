@@ -12,7 +12,7 @@ const userStore = useUserStore()
     </div>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item @click="userStore.logout()">{{ $t('logout') }}</el-dropdown-item>
+        <el-dropdown-item @click="userStore.logout()">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>

@@ -1,5 +1,4 @@
 <script setup>
-import LangSwitcher from '@/components/LangSwitcher.vue'
 import UserInfo from '@/components/UserInfo.vue'
 </script>
 
@@ -11,9 +10,8 @@ import UserInfo from '@/components/UserInfo.vue'
         <img src="@/assets/vite.svg" alt="logo" />
         <h1>Vue3 Admin Template</h1>
       </RouterLink>
-      <div class="vat-header__space"></div>
+      <div style="flex: 1 1 0%"></div>
       <div class="vat-header__actions">
-        <LangSwitcher class="vat-header__actions-item" />
         <UserInfo class="vat-header__actions-avatar" />
       </div>
     </div>
@@ -25,7 +23,7 @@ import UserInfo from '@/components/UserInfo.vue'
   display: flex;
   align-items: center;
   margin-inline: 16px;
-  height: var(--l-header-height);
+  height: var(--header-height);
 }
 
 .vat-header__logo {
@@ -45,10 +43,6 @@ import UserInfo from '@/components/UserInfo.vue'
     font-size: 18px;
     line-height: 32px;
   }
-}
-
-.vat-header__space {
-  flex: 1 1 0%;
 }
 
 .vat-header__actions {

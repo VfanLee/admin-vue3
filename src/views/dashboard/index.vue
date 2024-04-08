@@ -1,6 +1,4 @@
-<script setup>
-import PageHeader from '@/components/PageHeader/index.vue'
-</script>
+<script setup></script>
 
 <template>
   <PageHeader title="Dashboard Title" description="Dashboard Description" />
