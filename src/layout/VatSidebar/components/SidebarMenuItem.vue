@@ -8,7 +8,10 @@ defineProps({
 </script>
 
 <template>
-  <a :href="item.path" v-if="item.link">{{ item.meta.title }}</a>
+  <a class="el-menu-item" :href="item.path" v-if="item.link" target="_blank">
+    <SvgIcon name="arrow-up-right-from-square-solid" />
+    <span>{{ item.meta.title }}</span>
+  </a>
 
   <el-menu-item v-else-if="item.children.length === 1 && !item.alwaysShow" :index="item.children[0].path">
     <SvgIcon :name="item.children[0].meta.icon" v-if="item.children[0].meta.icon" />

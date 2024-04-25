@@ -1,22 +1,10 @@
 # vue3-admin-template
 
-## 介绍
+一个基于 Vite + Vue3 + Element Plus 的后台管理模板。
 
-基于 Vue3 + Vite 的后台管理模板。
+## 内置功能
 
-## 核心技术
-
-- Vue v3
-- Vite v5
-- Vue Router v4
-- Pinia v2
-- Element Plus v2
-
-## 基本功能
-
-[x] 登入 / 登出
-[] PC + Mobile 管理后台模板
-[x] 路由菜单
-[x] 面包屑
-[x] SVG Icon
-[x] 请求封装
+[] 登录、登出
+[] 404 页面
+[] 路由菜单
+[] 请求封装

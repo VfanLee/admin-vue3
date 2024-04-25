@@ -1,37 +1,33 @@
 import { defineStore } from 'pinia'
 import router from '@/router'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getToken, setToken, removeToken, getUserInfo, setUserInfo, removeUserInfo } from '@/utils/auth'
+import { reqLogin } from '@/api/user'
 
 const useUserStore = defineStore('user', {
   state: () => ({
     token: getToken(),
-    userInfo: {},
-    menuCode: []
+    userInfo: getUserInfo()
   }),
 
   getters: {},
 
   actions: {
-    login() {
-      this.token = 'vat-token'
+    async login(data) {
+      const res = await reqLogin(data)
 
-      setToken('vat-token')
-    },
+      this.token = res.token
+      this.userInfo = res
 
-    async getUserInfo() {
-      const userInfo = {
-        name: 'Super Admin'
-      }
-      this.userInfo = userInfo
-      return userInfo
+      setToken(res.token)
+      setUserInfo(res)
     },
 
     logout() {
       this.token = ''
       this.userInfo = {}
-      removeToken()
 
-      router.replace({ path: '/login' })
+      removeToken()
+      removeUserInfo()
     }
   }
 })

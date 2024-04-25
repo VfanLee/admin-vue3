@@ -3,20 +3,20 @@ import { resolve } from 'node:path'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import Inspect from 'vite-plugin-inspect'
+import VueDevTools from 'vite-plugin-vue-devtools'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import Inspect from 'vite-plugin-inspect'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 // https://cn.vitejs.dev/config/
 export default defineConfig(({ command, mode }) => ({
-  base: '/vue3-admin-template/', // 默认：/
+  base: './', // 默认：/
   resolve: {
-    // 别名设置
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)) // 别名：@ -> src
     }
   },
   build: {
@@ -28,6 +28,8 @@ export default defineConfig(({ command, mode }) => ({
   },
   plugins: [
     vue(),
+    Inspect(),
+    VueDevTools(),
     AutoImport({
       // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
       imports: ['vue'],
@@ -43,7 +45,6 @@ export default defineConfig(({ command, mode }) => ({
       iconDirs: [resolve(process.cwd(), 'src/icons')],
       symbolId: 'icon-[name]'
     }),
-    Inspect(),
     vueSetupExtend()
   ]
 }))

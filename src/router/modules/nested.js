@@ -46,6 +46,14 @@ export default {
               meta: {
                 title: '菜单 1-2-2'
               }
+            },
+            {
+              path: 'https://google.com',
+              link: true,
+              meta: {
+                title: 'Google',
+                icon: 'gauge-solid'
+              }
             }
           ]
         },

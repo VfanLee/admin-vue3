@@ -2,11 +2,11 @@ import axios from 'axios'
 import useUserStore from '@/stores/user'
 
 const request = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: '',
   timeout: 3000
-  // withCredentials: true // 跨域请求携带 cookie
 })
 
+// 请求拦截器
 request.interceptors.request.use(
   config => {
     // 在发送请求之前做些什么
@@ -22,10 +22,17 @@ request.interceptors.request.use(
   }
 )
 
+// 响应拦截器
 request.interceptors.response.use(
   response => {
     // 2xx 范围内的状态码都会触发该函数
     const { code, msg, data } = response.data
+    /**
+     * 请求接口统一结构为：{ code: xxx, msg: xxx, data: xxx }
+     * 当 code === 1 时，统一返回 data
+     * 当 code !== 1 时，提示并统一返回 Promise.reject(new Error(msg))
+     */
+    debugger
     if (code === 1) {
       return data
     } else {
@@ -37,6 +44,7 @@ request.interceptors.response.use(
     }
   },
   error => {
+    // 超出 2xx 范围的状态码都会触发该函数
     let message = ''
     const status = error.request.status
     switch (status) {

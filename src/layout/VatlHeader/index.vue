@@ -1,5 +1,5 @@
 <script setup>
-import UserInfo from '@/components/UserInfo.vue'
+import UserAvatar from '@/components/UserAvatar.vue'
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import UserInfo from '@/components/UserInfo.vue'
       </RouterLink>
       <div style="flex: 1 1 0%"></div>
       <div class="vat-header__actions">
-        <UserInfo class="vat-header__actions-avatar" />
+        <UserAvatar class="vat-header__actions-avatar" />
       </div>
     </div>
   </header>

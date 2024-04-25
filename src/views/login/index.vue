@@ -1,26 +1,24 @@
 <script setup>
-import useUserStore from '@/stores/user'
 import { useRouter } from 'vue-router'
-import { generateRandomColor } from '@/utils/color'
+import useAppStore from '@/stores/app'
+import useUserStore from '@/stores/user'
 
+const _router = useRouter()
+const appStore = useAppStore()
 const userStore = useUserStore()
-const router = useRouter()
 
 const loginFormRef = ref()
 const passwordItemRef = ref()
-const loginForm = reactive({
+
+const loginForm = ref({
   username: 'admin',
   password: 'admin'
 })
 const loginFormRule = reactive({
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }]
+  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
 })
-
-const hidePwd = ref(true)
-const isLoading = ref(false)
-const randomColor = {
-  backgroundImage: `linear-gradient(45deg ,${generateRandomColor()}, ${generateRandomColor()})`
-}
+const loading = ref(false)
 
 const login = async formEl => {
   if (!formEl) {
@@ -30,18 +28,19 @@ const login = async formEl => {
   await formEl.validate(async (valid, fields) => {
     if (valid) {
       try {
-        isLoading.value = true
-        await userStore.login(loginForm)
-        await router.replace({ path: '/' })
+        loading.value = true
+        await userStore.login(unref(loginForm))
+        _router.replace({ path: '/' })
         ElNotification({
           type: 'success',
-          message: '登录成功'
+          message: '登录成功',
+          duration: 3000
         })
       } catch (error) {
         passwordItemRef.value.validateState = 'error'
-        passwordItemRef.value.validateMessage = error.message
+        passwordItemRef.value.validateMessage = error.result || error.message
       } finally {
-        isLoading.value = false
+        loading.value = false
       }
     }
   })
@@ -49,34 +48,32 @@ const login = async formEl => {
 </script>
 
 <template>
-  <div class="page-login" :style="randomColor">
+  <div class="page-login">
     <div class="login__form__wrap">
-      <el-form class="login__form" ref="loginFormRef" :model="loginForm" :rules="loginFormRule">
-        <el-form-item>
-          <h1 class="login__title">登录</h1>
+      <el-form class="login__form" ref="loginFormRef" :model="loginForm" :rules="loginFormRule" label-position="top" hide-required-asterisk size="large">
+        <el-form-item class="login__form-item">
+          <h1 class="login__title">{{ appStore.title }}</h1>
+          <h2 class="login__text">登录</h2>
         </el-form-item>
 
-        <el-form-item prop="username">
-          <el-input class="login__username" v-model="loginForm.username" placeholder="任意用户名" autofocus @keyup.enter="login(loginFormRef)">
+        <el-form-item prop="username" label="用户名">
+          <el-input class="login__username" v-model="loginForm.username" placeholder="请输入用户名" autofocus @keyup.enter="login(loginFormRef)" clearable>
             <template #prefix>
-              <i class="fa-solid fa-user"></i>
+              <el-icon><User /></el-icon>
             </template>
           </el-input>
         </el-form-item>
 
-        <el-form-item prop="password" ref="passwordItemRef">
-          <el-input class="login__password" v-model="loginForm.password" :type="hidePwd ? 'password' : 'text'" placeholder="任意密码" @keyup.enter="login(loginFormRef)">
+        <el-form-item ref="passwordItemRef" prop="password" label="密码">
+          <el-input class="login__password" v-model="loginForm.password" placeholder="请输入密码" @keyup.enter="login(loginFormRef)" show-password>
             <template #prefix>
-              <i class="fa-solid fa-lock"></i>
-            </template>
-            <template #suffix>
-              <i :class="['pointer', 'fa-solid', hidePwd ? 'fa-eye-slash' : 'fa-eye']" @click="hidePwd = !hidePwd"></i>
+              <el-icon><Lock /></el-icon>
             </template>
           </el-input>
         </el-form-item>
 
         <el-form-item>
-          <el-button class="login__btn" @click="login(loginFormRef)" :loading="isLoading">登录</el-button>
+          <el-button class="login__btn" type="primary" @click="login(loginFormRef)" :loading="loading">登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -84,73 +81,35 @@ const login = async formEl => {
 </template>
 
 <style lang="scss" scoped>
-:deep() {
-  .el-form-item.is-error {
-    .el-input__wrapper {
-      border-bottom-color: var(--el-color-danger);
-      box-shadow: none;
-    }
-  }
-
-  .el-input__wrapper {
-    border-bottom: 1px solid #fff;
-    border-radius: 0;
-    background-color: transparent;
-    box-shadow: none;
-    color: transparent;
-  }
-
-  .el-input__prefix,
-  .el-input__suffix {
-    color: #fff;
-  }
-
-  .el-input__inner {
-    color: #fff;
-
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.8);
-    }
-  }
-}
-
 .page-login {
   overflow: hidden;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
+  background: url(@/assets/images/bg.png) no-repeat scroll center / cover;
 
-  .login__form__wrap {
-    margin: 0 10%;
-    width: 420px;
-    padding: 20px 30px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  .login__title {
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    user-select: none;
-  }
-
-  .login__password {
-    .el-input__suffix {
-      cursor: pointer;
+  .login__form-item {
+    :deep(.el-form-item__content) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .login__title,
+    .login__text {
+      margin: 0;
     }
   }
 
+  .login__form__wrap {
+    width: 420px;
+    min-width: 480px;
+    padding: 30px 20px;
+  }
+
   .login__btn {
-    margin-top: 18px;
     width: 100%;
-    border-radius: 16px;
-    font-weight: 700;
   }
 }
 </style>

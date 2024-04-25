@@ -1,16 +1,16 @@
 <script setup>
 import useAppStore from '@/stores/app'
-import routes from '@/router/routes'
+import { constantRoutes } from '@/router/routes'
 import { generateRouteMenus } from '@/utils/route'
 import SidebarMenuItem from './SidebarMenuItem.vue'
 
 const appStore = useAppStore()
 
-const routeMenus = computed(() => generateRouteMenus(routes))
+const routeMenus = computed(() => generateRouteMenus(constantRoutes))
 </script>
 
 <template>
-  <el-menu class="sidebar-menu" router :default-active="$route.fullPath" :collapse="appStore.isCollapse">
+  <el-menu class="sidebar-menu" router :default-active="$route.meta.activeMenu || $route.fullPath" :collapse="appStore.isCollapse">
     <SidebarMenuItem v-for="menuItem in routeMenus" :key="menuItem.path" :item="menuItem" />
   </el-menu>
 </template>

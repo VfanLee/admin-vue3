@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import routes from './routes'
+import { constantRoutes } from './routes'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-  routes
+  routes: constantRoutes
 })
 
 export default router

@@ -35,7 +35,7 @@ watch(
   display: flex;
   gap: 10px;
   margin-block-end: 8px;
-  i[class*='fa-'] {
+  i[class*='-icon'] {
     font-size: 12px;
   }
 }

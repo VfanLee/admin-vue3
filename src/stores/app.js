@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
+import config from '@/config/app'
 
 const useAppStore = defineStore('app', {
   state: () => {
     return {
+      title: config.title,
       isCollapse: false
     }
   },

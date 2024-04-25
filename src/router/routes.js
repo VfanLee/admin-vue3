@@ -6,23 +6,32 @@ import nested from './modules/nested'
  * 默认规则：当一个路由下面的 children 声明的路由大于1个时，自动会变成嵌套的模式
  *          当一个路由下面的 children 声明的路由只有1个时，会将该子路由当做根路由显示在侧边栏
  *
- * hidden: true                             当设置 true 的时候该路由不会在侧边栏出现 如401，login等页面，或者如一些编辑页面/edit/1（默认为 false）
- * alwaysShow: true                         如果设置为 true，则会忽略之前定义的规则，不管路由下面的 children 声明的个数都显示你的根路由（默认为 false）
- * name: 'route-name'                       设定路由的名字，一定要填写不然使用 <KeepAlive> 时会出现各种问题
- * redirect: noRedirect                     如果设置为 noRedirect，则在面包屑中不会发生重定向
- * link: false                              外链标志
+ * name: 'route-name'                       设定路由的名字。
+ * hidden: false                            如果设置为 true，该路由不会在侧边栏出现。如 /login、或者一些编辑页面 /edit/1（默认为 false）
+ * alwaysShow: false                        如果设置为 true，则会忽略之前定义的规则，不管路由下面的 children 声明的个数都会显示你的根路由（默认为 false）
+ * link: false                              外链标志。
  * meta: {
-          allowlist: true                   路由白名单，不登陆即可访问（默认为 false）
-          title: 'title'                    设置该路由在侧边栏和面包屑中展示的名字（建议设置）
-          icon: 'svg-name'                  侧边栏中显示的图标
-          activeMenu: '/example/list'       当路由设置了该属性，则会高亮相对应的侧边栏
-                                            这在某些场景非常有用，比如：一个文章的列表页路由为：/article/list
-                                            点击文章进入文章详情页，这时候路由为 /article/1，但你想在侧边栏高亮文章列表的路由，就可以进行如下设置
-          hideBreadcrumb: false             如果设置为 false，则不会在 breadcrumb 面包屑中显示（默认为 true）
+          allowlist: false                  路由白名单，无需登陆即可访问（默认为 false）
+          title: 'title'                    设置该路由在侧边栏展示的名字。
+          icon: 'svg-name'                  侧边栏中显示的图标。
+          activeMenu: '/active-menu'        当路由设置了该属性，路由菜单则会高亮相应的子菜单。如：文章编辑页面时，高亮文章列表。
         }
  */
 
-const routes = [
+export const constantRoutes = [
+  // demo
+  {
+    path: '/demo',
+    component: () => import('@/views/demo/index.vue'),
+    name: 'Demo',
+    meta: {
+      title: 'Demo',
+      allowlist: true
+    },
+    hidden: true
+  },
+
+  // 登录
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),
@@ -34,17 +43,7 @@ const routes = [
     hidden: true
   },
 
-  {
-    path: '/notfound',
-    component: () => import('@/views/error/notfound.vue'),
-    name: 'Notfound',
-    meta: {
-      title: '页面没找到',
-      allowlist: true
-    },
-    hidden: true
-  },
-
+  // 仪表盘
   {
     path: '/',
     component: Layout,
@@ -62,14 +61,81 @@ const routes = [
     ]
   },
 
+  // article
+  {
+    path: '/article',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'articleList',
+        component: () => import('@/views/article/index.vue'),
+        meta: {
+          title: '文章管理',
+          icon: 'star-solid'
+        }
+      },
+      {
+        path: 'detail/:id',
+        name: 'articleDetail',
+        component: () => import('@/views/article/detail.vue'),
+        hidden: true,
+        meta: {
+          activeMenu: '/article'
+        }
+      },
+      {
+        path: 'edit/:id?',
+        name: 'articleEdit',
+        component: () => import('@/views/article/edit.vue'),
+        hidden: true,
+        meta: {
+          activeMenu: '/article'
+        }
+      }
+    ]
+  },
+
+  // 嵌套路由
   nested,
+
+  // 错误页面
+  {
+    path: '/error-page',
+    component: Layout,
+    alwaysShow: true,
+    meta: {
+      title: '错误页面',
+      icon: 'ban-solid'
+    },
+    children: [
+      {
+        path: '404',
+        name: '404',
+        component: () => import('@/views/error-page/404.vue'),
+        meta: {
+          title: '404'
+        }
+      }
+    ]
+  },
+
+  // 外链
+  // {
+  //   path: 'https://google.com',
+  //   link: true,
+  //   meta: {
+  //     title: 'Google',
+  //     icon: 'gauge-solid'
+  //   }
+  // },
 
   // 添加 404 路由
   {
     path: '/:catchAll(.*)',
-    redirect: '/notfound',
+    redirect: '/error-page/404',
     hidden: true
   }
 ]
 
-export default routes
+export const asyncRoutes = []

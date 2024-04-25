@@ -18,13 +18,8 @@ router.beforeEach(async (to, from, next) => {
       if (!isEmptyObject(userStore.userInfo)) {
         next()
       } else {
-        try {
-          await userStore.getUserInfo()
-
-          next({ ...to, replace: true })
-        } catch ({ message }) {
-          userStore.logout()
-        }
+        userStore.logout()
+        next({ path: `/login`, query: { redirect: to.fullPath } })
       }
     }
   } else {
