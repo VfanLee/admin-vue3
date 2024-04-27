@@ -6,7 +6,7 @@ import nested from './modules/nested'
  * 默认规则：当一个路由下面的 children 声明的路由大于1个时，自动会变成嵌套的模式
  *          当一个路由下面的 children 声明的路由只有1个时，会将该子路由当做根路由显示在侧边栏
  *
- * name: 'route-name'                       设定路由的名字。
+ * name: 'route-name'                       设定路由的名字。必须！
  * hidden: false                            如果设置为 true，该路由不会在侧边栏出现。如 /login、或者一些编辑页面 /edit/1（默认为 false）
  * alwaysShow: false                        如果设置为 true，则会忽略之前定义的规则，不管路由下面的 children 声明的个数都会显示你的根路由（默认为 false）
  * link: false                              外链标志。
@@ -59,11 +59,14 @@ export const constantRoutes = [
         }
       }
     ]
-  },
+  }
+]
 
+export const asyncRoutes = [
   // article
   {
     path: '/article',
+    name: 'Article',
     component: Layout,
     children: [
       {
@@ -99,9 +102,49 @@ export const constantRoutes = [
   // 嵌套路由
   nested,
 
+  // 嵌套外链
+  {
+    path: '/nested-link',
+    name: 'NestedLink',
+    meta: {
+      title: '嵌套外链',
+      icon: 'gauge-solid'
+    },
+    children: [
+      {
+        path: 'https://google.com',
+        link: true,
+        meta: {
+          title: 'Google',
+          icon: 'gauge-solid'
+        }
+      },
+      {
+        path: 'https://baidu.com',
+        link: true,
+        meta: {
+          title: 'Baidu',
+          icon: 'gauge-solid'
+        }
+      }
+    ]
+  },
+
+  // 外链
+  {
+    path: '/https://github.com',
+    name: 'Link',
+    link: true,
+    meta: {
+      title: 'GitHub',
+      icon: 'gauge-solid'
+    }
+  },
+
   // 错误页面
   {
     path: '/error-page',
+    name: 'ErrorPage',
     component: Layout,
     alwaysShow: true,
     meta: {
@@ -111,7 +154,7 @@ export const constantRoutes = [
     children: [
       {
         path: '404',
-        name: '404',
+        name: 'ErrorPage404',
         component: () => import('@/views/error-page/404.vue'),
         meta: {
           title: '404'
@@ -120,22 +163,11 @@ export const constantRoutes = [
     ]
   },
 
-  // 外链
-  // {
-  //   path: 'https://google.com',
-  //   link: true,
-  //   meta: {
-  //     title: 'Google',
-  //     icon: 'gauge-solid'
-  //   }
-  // },
-
   // 添加 404 路由
   {
     path: '/:catchAll(.*)',
+    name: '404',
     redirect: '/error-page/404',
     hidden: true
   }
 ]
-
-export const asyncRoutes = []

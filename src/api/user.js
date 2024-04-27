@@ -7,3 +7,10 @@ export const reqLogin = data => {
     data
   })
 }
+
+export const reqLogout = () => {
+  return request({
+    url: '/vat-mock/user/logout',
+    method: 'post'
+  })
+}

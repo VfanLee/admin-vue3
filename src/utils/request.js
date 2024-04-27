@@ -32,7 +32,6 @@ request.interceptors.response.use(
      * 当 code === 1 时，统一返回 data
      * 当 code !== 1 时，提示并统一返回 Promise.reject(new Error(msg))
      */
-    debugger
     if (code === 1) {
       return data
     } else {

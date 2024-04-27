@@ -2,12 +2,12 @@
 import { useRouter } from 'vue-router'
 import useUserStore from '@/stores/user'
 
-const _route = useRouter()
+const _router = useRouter()
 const userStore = useUserStore()
 
-const logout = () => {
-  userStore.logout()
-  _route.push({ path: '/login' })
+const logout = async () => {
+  await userStore.logout()
+  _router.push({ path: '/login' })
 }
 </script>
 

@@ -34,7 +34,7 @@ async function getArticleList() {
   </el-card>
 
   <el-card class="pagination-container">
-    <el-pagination></el-pagination>
+    <!-- <el-pagination></el-pagination> -->
   </el-card>
 </template>
 
