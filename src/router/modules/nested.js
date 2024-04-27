@@ -6,7 +6,7 @@ export default {
   component: Layout,
   redirect: '/nested/menu1/menu1-1',
   meta: {
-    title: 'nested',
+    title: '路由示例',
     icon: 'sitemap-solid'
   },
   children: [
@@ -50,14 +50,6 @@ export default {
               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2/index.vue'),
               meta: {
                 title: '菜单 1-2-2'
-              }
-            },
-            {
-              path: 'https://google.com',
-              link: true,
-              meta: {
-                title: 'Google',
-                icon: 'gauge-solid'
               }
             }
           ]

@@ -1,12 +1,12 @@
 <script setup>
 import useAppStore from '@/stores/app'
-import { constantRoutes } from '@/router/routes'
+import { asyncRoutes, constantRoutes } from '@/router/routes'
 import { generateRouteMenus } from '@/utils/route'
 import SidebarMenuItem from './SidebarMenuItem.vue'
 
 const appStore = useAppStore()
 
-const routeMenus = computed(() => generateRouteMenus(constantRoutes))
+const routeMenus = computed(() => generateRouteMenus([...constantRoutes, ...asyncRoutes]))
 </script>
 
 <template>
