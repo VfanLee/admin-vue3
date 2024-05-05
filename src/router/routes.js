@@ -102,45 +102,6 @@ export const asyncRoutes = [
   // 嵌套路由
   nested,
 
-  // 嵌套外链
-  {
-    path: '/nested-link',
-    name: 'NestedLink',
-    meta: {
-      title: '嵌套外链',
-      icon: 'gauge-solid'
-    },
-    children: [
-      {
-        path: 'https://google.com',
-        link: true,
-        meta: {
-          title: 'Google',
-          icon: 'gauge-solid'
-        }
-      },
-      {
-        path: 'https://baidu.com',
-        link: true,
-        meta: {
-          title: 'Baidu',
-          icon: 'gauge-solid'
-        }
-      }
-    ]
-  },
-
-  // 外链
-  {
-    path: '/https://github.com',
-    name: 'Link',
-    link: true,
-    meta: {
-      title: 'GitHub',
-      icon: 'gauge-solid'
-    }
-  },
-
   // 错误页面
   {
     path: '/error-page',
@@ -161,6 +122,43 @@ export const asyncRoutes = [
         }
       }
     ]
+  },
+
+  // 嵌套外链
+  {
+    path: '/nested-link',
+    name: 'NestedLink',
+    meta: {
+      title: '嵌套外链',
+      icon: 'arrow-up-right-from-square-solid'
+    },
+    children: [
+      {
+        path: 'https://google.com',
+        link: true,
+        meta: {
+          title: 'Google'
+        }
+      },
+      {
+        path: 'https://baidu.com',
+        link: true,
+        meta: {
+          title: 'Baidu'
+        }
+      }
+    ]
+  },
+
+  // 外链
+  {
+    path: 'https://github.com/VfanLee/vue3-admin-template',
+    name: 'Link',
+    link: true,
+    meta: {
+      title: 'GitHub',
+      icon: 'arrow-up-right-from-square-solid'
+    }
   },
 
   // 添加 404 路由

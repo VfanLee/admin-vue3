@@ -2,7 +2,7 @@
   <footer class="vat-footer">
     <div class="vat-footer">
       <div class="vat-footer-list">
-        <a href="https://github.com/VfanLee/vue3-admin-template" target="blank">Vue3 Admin Template</a>
+        <a href="https://github.com/VfanLee/vue3-admin-template" target="blank">Vue3 Admin Template |</a>
         <a href="https://cn.vitejs.dev/" target="_blank">Vite</a>
         <a href="https://cn.vuejs.org/" target="_blank">Vue3</a>
         <a href="https://element-plus.org/zh-CN/" target="_blank">Element Plus</a>

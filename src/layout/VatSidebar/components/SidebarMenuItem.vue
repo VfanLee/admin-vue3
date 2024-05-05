@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <a class="el-menu-item" :href="item.path" v-if="item.link" target="_blank">
-    <SvgIcon name="arrow-up-right-from-square-solid" />
+    <SvgIcon :name="item.meta.icon" v-if="item.meta.icon" />
     <span>{{ item.meta.title }}</span>
   </a>
 

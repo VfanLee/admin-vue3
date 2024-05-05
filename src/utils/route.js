@@ -1,11 +1,11 @@
 import { resolve } from 'path-browserify'
 
 /**
- * 过滤外链路由
+ * 过滤路由
  * @param {any[]} routes 路由表
  * @returns
  */
-export function filterLinkRoute(routes) {
+export function filterRoutes(routes) {
   return routes.filter(item => {
     if (item.link) {
       return false

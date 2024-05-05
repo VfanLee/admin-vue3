@@ -3,6 +3,7 @@ import router from '@/router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { asyncRoutes } from '@/router/routes'
+import { filterRoutes } from '@/utils/route'
 
 NProgress.configure({ showSpinner: false })
 
@@ -37,7 +38,7 @@ router.afterEach((to, from, failure) => {
 async function asyncAddRoutes() {
   let isNew = false
 
-  asyncRoutes.forEach(route => {
+  filterRoutes(asyncRoutes).forEach(route => {
     const hasRoute = router.hasRoute(route.name)
     if (hasRoute) return
     router.addRoute(route)
