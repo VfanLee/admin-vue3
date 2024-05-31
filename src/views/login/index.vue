@@ -1,5 +1,4 @@
 <script setup>
-import { useRouter } from 'vue-router'
 import useAppStore from '@/stores/app'
 import useUserStore from '@/stores/user'
 

@@ -30,14 +30,19 @@ export default defineConfig(({ command, mode }) => ({
     vue(),
     Inspect(),
     VueDevTools(),
+    /* 
+      自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+      自动导入 Vue Router 相关函数，如：useRouter, useRoute, onBeforeRouteUpdate 等
+      自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+    */
     AutoImport({
-      // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-      imports: ['vue'],
-      // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+      imports: ['vue', 'vue-router'],
       resolvers: [ElementPlusResolver()]
     }),
+    /* 
+      自动导入 Element Plus 组件
+     */
     Components({
-      // 自动导入 Element Plus 组件
       resolvers: [ElementPlusResolver()]
     }),
     // https://github.com/vbenjs/vite-plugin-svg-icons
