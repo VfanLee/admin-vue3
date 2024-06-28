@@ -3,7 +3,6 @@ import pinia from './stores'
 import router from './router'
 import './router/permission'
 import { name, version } from '/package.json'
-import '/mock'
 
 import 'virtual:svg-icons-register'
 import App from './App.vue'

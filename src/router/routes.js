@@ -26,9 +26,9 @@ export const constantRoutes = [
     name: 'Demo',
     meta: {
       title: 'Demo',
-      allowlist: true
+      allowlist: true,
     },
-    hidden: true
+    hidden: true,
   },
 
   // 登录
@@ -38,9 +38,9 @@ export const constantRoutes = [
     name: 'Login',
     meta: {
       title: '登录',
-      allowlist: true
+      allowlist: true,
     },
-    hidden: true
+    hidden: true,
   },
 
   // 仪表盘
@@ -55,11 +55,11 @@ export const constantRoutes = [
         component: () => import('@/views/dashboard/index.vue'),
         meta: {
           title: '工作台',
-          icon: 'gauge-solid'
-        }
-      }
-    ]
-  }
+          icon: 'gauge-solid',
+        },
+      },
+    ],
+  },
 ]
 
 export const asyncRoutes = [
@@ -75,8 +75,8 @@ export const asyncRoutes = [
         component: () => import('@/views/article/index.vue'),
         meta: {
           title: '文章管理',
-          icon: 'star-solid'
-        }
+          icon: 'star-solid',
+        },
       },
       {
         path: 'detail/:id',
@@ -84,8 +84,8 @@ export const asyncRoutes = [
         component: () => import('@/views/article/detail.vue'),
         hidden: true,
         meta: {
-          activeMenu: '/article'
-        }
+          activeMenu: '/article',
+        },
       },
       {
         path: 'edit/:id?',
@@ -93,10 +93,10 @@ export const asyncRoutes = [
         component: () => import('@/views/article/edit.vue'),
         hidden: true,
         meta: {
-          activeMenu: '/article'
-        }
-      }
-    ]
+          activeMenu: '/article',
+        },
+      },
+    ],
   },
 
   // 嵌套路由
@@ -110,7 +110,7 @@ export const asyncRoutes = [
     alwaysShow: true,
     meta: {
       title: '错误页面',
-      icon: 'ban-solid'
+      icon: 'ban-solid',
     },
     children: [
       {
@@ -118,10 +118,10 @@ export const asyncRoutes = [
         name: 'ErrorPage404',
         component: () => import('@/views/error-page/404.vue'),
         meta: {
-          title: '404'
-        }
-      }
-    ]
+          title: '404',
+        },
+      },
+    ],
   },
 
   // 嵌套外链
@@ -130,35 +130,35 @@ export const asyncRoutes = [
     name: 'NestedLink',
     meta: {
       title: '嵌套外链',
-      icon: 'arrow-up-right-from-square-solid'
+      icon: 'arrow-up-right-from-square-solid',
     },
     children: [
       {
         path: 'https://google.com',
         link: true,
         meta: {
-          title: 'Google'
-        }
+          title: 'Google',
+        },
       },
       {
         path: 'https://baidu.com',
         link: true,
         meta: {
-          title: 'Baidu'
-        }
-      }
-    ]
+          title: 'Baidu',
+        },
+      },
+    ],
   },
 
   // 外链
   {
-    path: 'https://github.com/VfanLee/vue3-admin-template',
+    path: 'https://github.com/VfanLee/vue-admin-template',
     name: 'Link',
     link: true,
     meta: {
       title: 'GitHub',
-      icon: 'arrow-up-right-from-square-solid'
-    }
+      icon: 'arrow-up-right-from-square-solid',
+    },
   },
 
   // 添加 404 路由
@@ -166,6 +166,6 @@ export const asyncRoutes = [
     path: '/:catchAll(.*)',
     name: '404',
     redirect: '/error-page/404',
-    hidden: true
-  }
+    hidden: true,
+  },
 ]

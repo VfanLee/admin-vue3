@@ -1,5 +1,5 @@
 {
-  "name": "vue3-admin-template",
+  "name": "vue-admin-template",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -7,38 +7,32 @@
     "name": "Vfan Lee",
     "email": "fanfanfafafa@gmail.com"
   },
-  "description": "A vue3.x admin template",
+  "description": "vue admin template",
   "keywords": [
     "admin-template",
     "admin-dashboard",
-    "element-plus",
+    "vite",
     "vue",
-    "vue3",
     "vue-router",
     "pinia",
-    "vite"
+    "element-plus"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vfanlee/vue3-admin-template.git"
+    "url": "git+https://github.com/vfanlee/vue-admin-template.git"
   },
   "scripts": {
-    "server": "cd server && npm run start",
-    "dev": "vite",
-    "dev:cjs": "set \"VITE_CJS_TRACE=true\" && vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "start": "npm run dev",
+    "dev": "vite --mode development",
+    "build": "vite build --mode production",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.8",
     "element-plus": "^2.7.1",
     "js-cookie": "^3.0.5",
-    "mockjs": "^1.1.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "path-browserify": "^1.0.1",

@@ -8,7 +8,7 @@ import UserAvatar from '@/components/UserAvatar.vue'
     <div class="vat-header__inner">
       <RouterLink class="vat-header__logo" to="/dashboard">
         <img src="@/assets/vite.svg" alt="logo" />
-        <h1>Vue3 Admin Template</h1>
+        <h1>Vue Admin Template</h1>
       </RouterLink>
       <div style="flex: 1 1 0%"></div>
       <div class="vat-header__actions">

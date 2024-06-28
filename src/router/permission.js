@@ -7,6 +7,7 @@ import { filterRoutes } from '@/utils/route'
 
 NProgress.configure({ showSpinner: false })
 
+// 全局前置守卫
 router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore()
 
@@ -29,6 +30,7 @@ router.beforeEach(async (to, from, next) => {
   }
 })
 
+// 全局后置钩子
 router.afterEach((to, from, failure) => {
   document.title = to.meta.title
 

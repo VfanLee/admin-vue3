@@ -1,31 +1,33 @@
 import request from '@/utils/request'
 
+const VAT_API = import.meta.env.VITE_VAT_API
+
 export const reqGetArticleList = params => {
   return request({
-    url: '/vat-mock/article',
+    url: VAT_API + '/articles',
     method: 'get',
-    params
+    params,
   })
 }
 
 export const reqGetArticleDetail = articleId => {
   return request({
-    url: `/vat-mock/article/${articleId}`,
-    method: 'get'
+    url: VAT_API + `/articles/${articleId}`,
+    method: 'get',
   })
 }
 
 export const reqEditArticle = data => {
   return request({
-    url: `/vat-mock/article`,
+    url: VAT_API + `/articles/${articleId}`,
     method: 'post',
-    data
+    data,
   })
 }
 
 export const reqDeleteArticle = articleId => {
   return request({
-    url: `/vat-mock/article/${articleId}`,
-    method: 'delete'
+    url: VAT_API + `/articles/${articleId}`,
+    method: 'delete',
   })
 }

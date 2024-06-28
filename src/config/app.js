@@ -1,3 +1,3 @@
 export default {
-  title: 'Vue3 Admin Template'
+  title: 'Vue Admin Template',
 }

@@ -16,15 +16,15 @@ export default defineConfig(({ command, mode }) => ({
   base: './', // 默认：/
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)) // 别名：@ -> src
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)), // 别名：@ -> src
+    },
   },
   build: {
-    outDir: 'dist' // 默认：dist
+    outDir: 'dist', // 默认：dist
   },
   server: {
     host: 'localhost', // 默认：localhost
-    port: '5173' // 默认：5173
+    port: '5173', // 默认：5173
   },
   plugins: [
     vue(),
@@ -37,19 +37,19 @@ export default defineConfig(({ command, mode }) => ({
     */
     AutoImport({
       imports: ['vue', 'vue-router'],
-      resolvers: [ElementPlusResolver()]
+      resolvers: [ElementPlusResolver()],
     }),
     /* 
       自动导入 Element Plus 组件
      */
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [ElementPlusResolver()],
     }),
     // https://github.com/vbenjs/vite-plugin-svg-icons
     createSvgIconsPlugin({
       iconDirs: [resolve(process.cwd(), 'src/icons')],
-      symbolId: 'icon-[name]'
+      symbolId: 'icon-[name]',
     }),
-    vueSetupExtend()
-  ]
+    vueSetupExtend(),
+  ],
 }))
