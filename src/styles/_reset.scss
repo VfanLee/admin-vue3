@@ -1,0 +1,15 @@
+// https://meyerweb.com/eric/tools/css/reset/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border: 0px solid var(--el-border-color);
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+::-ms-reveal {
+  display: none;
+}

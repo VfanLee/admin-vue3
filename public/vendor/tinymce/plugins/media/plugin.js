@@ -1,5 +1,5 @@
 /**
- * TinyMCE version 6.7.2 (2023-10-25)
+ * TinyMCE version 7.6.1 (2025-01-22)
  */
 
 (function () {
@@ -587,6 +587,12 @@
 
     const isMediaElement = element => element.hasAttribute('data-mce-object') || element.hasAttribute('data-ephox-embed-iri');
     const setup$2 = editor => {
+      editor.on('mousedown', e => {
+        const previewObj = editor.dom.getParent(e.target, '.mce-preview-object');
+        if (previewObj && editor.dom.getAttrib(previewObj, 'data-mce-selected') === '2') {
+          e.stopImmediatePropagation();
+        }
+      });
       editor.on('click keyup touchend', () => {
         const selectedNode = editor.selection.getNode();
         if (selectedNode && editor.dom.hasClass(selectedNode, 'mce-preview-object')) {
@@ -625,7 +631,7 @@
         if (cache[data.source]) {
           wrappedResolve(cache[data.source]);
         } else {
-          handler({ url: data.source }, wrappedResolve, rej);
+          handler({ url: data.source }).then(wrappedResolve).catch(rej);
         }
       });
     };
@@ -804,7 +810,8 @@
           name: 'source',
           type: 'urlinput',
           filetype: 'media',
-          label: 'Source'
+          label: 'Source',
+          picker_text: 'Browse files'
         }];
       const sizeInput = !hasDimensions(editor) ? [] : [{
           type: 'sizeinput',
@@ -990,7 +997,9 @@
       if (name === 'iframe') {
         previewNode.attr({
           allowfullscreen: node.attr('allowfullscreen'),
-          frameborder: '0'
+          frameborder: '0',
+          sandbox: node.attr('sandbox'),
+          referrerpolicy: node.attr('referrerpolicy')
         });
       } else {
         const attrs = [

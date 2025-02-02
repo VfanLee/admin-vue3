@@ -1,6 +1,6 @@
-<script setup name="Sidebar">
+<script setup lang="ts">
 import SidebarMenu from './components/SidebarMenu.vue'
-import SidebarCollapsedButton from './components/SidebarCollapsedButton.vue'
+import SidebarCollapseButton from './components/SidebarCollapseButton.vue'
 </script>
 
 <template>
@@ -8,15 +8,19 @@ import SidebarCollapsedButton from './components/SidebarCollapsedButton.vue'
   <aside class="vat-sidebar vat-sidebar--fixed">
     <div class="vat-sidebar__inner">
       <SidebarMenu />
-      <SidebarCollapsedButton />
+      <SidebarCollapseButton />
     </div>
   </aside>
 </template>
 
 <style lang="scss">
 .vat-sidebar__inner {
+  --el-menu-bg-color: transparent;
+  --el-menu-item-height: 40px;
+  --el-menu-sub-item-height: 40px;
+
   overflow: hidden auto;
   height: 100%;
-  padding-inline: 8px;
+  font-size: 14px;
 }
 </style>

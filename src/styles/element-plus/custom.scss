@@ -1,0 +1,18 @@
+:root {
+  .el-popper__arrow {
+    display: none;
+  }
+
+  .el-form-item--large {
+    margin-block-end: 24px;
+  }
+
+  .el-dropdown-menu--large {
+    padding: 0;
+  }
+
+  // .el-dropdown-menu__item:not(.is-disabled).is-active {
+  //   background-color: var(--el-dropdown-menuItem-hover-fill);
+  //   color: var(--el-dropdown-menuItem-hover-color);
+  // }
+}

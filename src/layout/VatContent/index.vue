@@ -1,10 +1,8 @@
-<script setup>
-import PageHeader from './PageHeader/index.vue'
+<script setup lang="ts">
 </script>
 
 <template>
   <main class="vat-content">
-    <PageHeader />
     <RouterView></RouterView>
   </main>
 </template>

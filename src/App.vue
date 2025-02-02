@@ -1,15 +1,16 @@
-<script setup>
-import useAppStore from './stores/app'
+<script setup lang="ts">
+import type { ConfigProviderProps } from 'element-plus'
+import { zhCn } from 'element-plus/es/locale/index.mjs'
 
-const appStore = useAppStore()
-
-onMounted(() => {
-  console.log('App Init')
-
-  appStore.init()
-})
+const configProviderProps: Partial<ConfigProviderProps> = {
+  size: 'large',
+  locale: zhCn,
+  zIndex: 1000,
+}
 </script>
 
 <template>
-  <RouterView />
+  <el-config-provider v-bind="configProviderProps">
+    <RouterView />
+  </el-config-provider>
 </template>

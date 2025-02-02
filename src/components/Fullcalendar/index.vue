@@ -1,5 +1,5 @@
 <!-- https://fullcalendar.io/ -->
-<script setup>
+<script setup lang="ts">
 import { Calendar } from '@fullcalendar/core'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
@@ -16,15 +16,17 @@ onMounted(() => {
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,listWeek'
+      right: 'dayGridMonth,timeGridWeek,listWeek',
     },
     locales: allLocales,
-    locale: 'zh-cn'
+    locale: 'zh-cn',
   })
   calendar.render()
 })
 </script>
 
 <template>
-  <div :id="calendarId"></div>
+  <div class="fullcalendar-container">
+    <div :id="calendarId"></div>
+  </div>
 </template>

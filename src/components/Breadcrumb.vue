@@ -1,12 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { getI18nTitle } from '@/utils/lang'
 
 const route = useRoute()
 
-const breadcrumbRoutes = ref([])
+const breadcrumbRoutes = ref<any>([])
 const filterBreadcrumb = () => {
-  breadcrumbRoutes.value = route.matched.filter(route => route.meta && route.meta.title)
+  breadcrumbRoutes.value = route.matched.filter((route) => route.meta && route.meta.title)
 }
 
 watch(
@@ -14,7 +13,7 @@ watch(
   () => {
     filterBreadcrumb()
   },
-  { immediate: true }
+  { immediate: true },
 )
 </script>
 
@@ -23,8 +22,8 @@ watch(
     <el-breadcrumb separator="/">
       <template v-for="(route, index) of breadcrumbRoutes" :key="route.path">
         <el-breadcrumb-item v-if="!route.meta.hideBreadcrumb">
-          <span v-if="index === breadcrumbRoutes.length - 1">{{ getI18nTitle(route.meta.title) }}</span>
-          <RouterLink :to="route.path" v-else>{{ getI18nTitle(route.meta.title) }}</RouterLink>
+          <span v-if="index === breadcrumbRoutes.length - 1"> {{ route.meta.title }}</span>
+          <RouterLink :to="route.path" v-else>{{ route.meta.title }}</RouterLink>
         </el-breadcrumb-item>
       </template>
     </el-breadcrumb>

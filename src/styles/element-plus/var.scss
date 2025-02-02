@@ -1,0 +1,29 @@
+// https://github.com/element-plus/element-plus/blob/dev/packages/theme-chalk/src/common/var.scss
+
+@use 'sass:color';
+@use 'sass:map';
+@use '@/styles/common/var' as *;
+
+:root:root {
+  --el-color-primary: #{map.get(map.get($colors, 'primary'), 'base')};
+
+  // /* Generate Light Colors */
+  @for $i from 1 through 9 {
+    --el-color-primary-light-#{$i}: #{color.mix(
+        $white,
+        map.get(map.get($colors, 'primary'), 'base'),
+        $i * 10%
+      )};
+  }
+
+  // /* Generate Dark Colors */
+  @for $i from 1 through 9 {
+    --el-color-primary-dark-#{$i}: #{color.mix(
+        $black,
+        map.get(map.get($colors, 'primary'), 'base'),
+        $i * 10%
+      )};
+  }
+
+  --el-border-radius-base: 8px;
+}

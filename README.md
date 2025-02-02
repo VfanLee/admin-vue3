@@ -2,21 +2,16 @@
 
 ## 介绍
 
-基于 Vue3 + Vite 的后台管理模板。
-
-## 核心技术
-
-- Vue v3
-- Vite v5
-- Vue Router v4
-- Pinia v2
-- Element Plus v2
+一个基于 Vue <sup>v3</sup> + TypeScript + Vite <sup>v6</sup> + Element Plus <sup>v2</sup> 的后台管理模板。
 
 ## 功能
 
+- [x] 登录/登出
+- [x] 路由菜单
+  - [x] 嵌套路由
+  - [x] 动态路由
+- [ ] 管理端 UI
+  - [x] 侧边栏折叠
+  - [ ] 明亮/暗黑主题
+  - [ ] 主色调切换
 - [x] i18n 国际化
-- [x] 登入/登出
-- [x] 动态路由菜单
-- [x] 权限控制
-- [x] 暗黑模式
-- [x] 动态换肤

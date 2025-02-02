@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup lang="ts">
+</script>
 
 <template>
-  <p>Dashboard</p>
+  <div class="dashboard-page">仪表盘</div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+</style>

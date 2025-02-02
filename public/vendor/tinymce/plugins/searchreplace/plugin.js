@@ -1,5 +1,5 @@
 /**
- * TinyMCE version 6.7.2 (2023-10-25)
+ * TinyMCE version 7.6.1 (2025-01-22)
  */
 
 (function () {
@@ -360,8 +360,8 @@
     var global = tinymce.util.Tools.resolve('tinymce.dom.TreeWalker');
 
     const isSimpleBoundary = (dom, node) => dom.isBlock(node) || has(dom.schema.getVoidElements(), node.nodeName);
-    const isContentEditableFalse = (dom, node) => dom.getContentEditable(node) === 'false';
-    const isContentEditableTrueInCef = (dom, node) => dom.getContentEditable(node) === 'true' && node.parentNode && dom.getContentEditableParent(node.parentNode) === 'false';
+    const isContentEditableFalse = (dom, node) => !dom.isEditable(node);
+    const isContentEditableTrueInCef = (dom, node) => dom.getContentEditable(node) === 'true' && node.parentNode && !dom.isEditable(node.parentNode);
     const isHidden = (dom, node) => !dom.isBlock(node) && has(dom.schema.getWhitespaceElements(), node.nodeName);
     const isBoundary = (dom, node) => isSimpleBoundary(dom, node) || isContentEditableFalse(dom, node) || isHidden(dom, node) || isContentEditableTrueInCef(dom, node);
     const isText = node => node.nodeType === 3;
@@ -896,37 +896,41 @@
       const getPanelItems = error => {
         const items = [
           {
-            type: 'bar',
-            items: [
-              {
-                type: 'input',
-                name: 'findtext',
-                placeholder: 'Find',
-                maximized: true,
-                inputMode: 'search'
-              },
-              {
-                type: 'button',
-                name: 'prev',
-                text: 'Previous',
-                icon: 'action-prev',
-                enabled: false,
-                borderless: true
-              },
-              {
-                type: 'button',
-                name: 'next',
-                text: 'Next',
-                icon: 'action-next',
-                enabled: false,
-                borderless: true
-              }
-            ]
+            type: 'label',
+            label: 'Find',
+            for: 'findtext',
+            items: [{
+                type: 'bar',
+                items: [
+                  {
+                    type: 'input',
+                    name: 'findtext',
+                    maximized: true,
+                    inputMode: 'search'
+                  },
+                  {
+                    type: 'button',
+                    name: 'prev',
+                    text: 'Previous',
+                    icon: 'action-prev',
+                    enabled: false,
+                    borderless: true
+                  },
+                  {
+                    type: 'button',
+                    name: 'next',
+                    text: 'Next',
+                    icon: 'action-next',
+                    enabled: false,
+                    borderless: true
+                  }
+                ]
+              }]
           },
           {
             type: 'input',
             name: 'replacetext',
-            placeholder: 'Replace with',
+            label: 'Replace with',
             inputMode: 'search'
           }
         ];
@@ -1067,7 +1071,8 @@
       editor.ui.registry.addButton('searchreplace', {
         tooltip: 'Find and replace',
         onAction: showDialog(editor, currentSearchState),
-        icon: 'search'
+        icon: 'search',
+        shortcut: 'Meta+F'
       });
       editor.shortcuts.add('Meta+F', '', showDialog(editor, currentSearchState));
     };

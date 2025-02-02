@@ -1,47 +1,22 @@
-<!-- https://www.tiny.cloud/ -->
-<script setup name="Tinymce">
-import '/public/vendor/tinymce/tinymce'
+<script setup lang="ts">
+// https://www.tiny.cloud/docs/tinymce/latest/vue-ref/
 import Editor from '@tinymce/tinymce-vue'
-import { defaultConfig } from './config'
+import config from './config'
 
-const props = defineProps({
-  modelValue: {
-    type: String,
-    default: ''
-  },
-  config: {
-    type: Object,
-    default: () => ({})
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  }
+defineOptions({
+  name: 'Tinymce',
+  inheritAttrs: false,
 })
 
-const emit = defineEmits(['update:modelValue', 'init', 'change', 'blur'])
 
-const init = ref({
-  ...defaultConfig,
-  ...props.config
-})
-
-const handleInit = (event, editor) => {
-  console.log(`${editor.id} init!`)
-  emit('init', event, editor)
-}
 </script>
 
 <template>
-  <div class="tinymce-container" :style="{ height: init.height + 'px' }">
+  <div class="tinymce-container">
     <Editor
-      :modelValue="modelValue"
-      @update:modelValue="value => $emit('update:modelValue', value)"
-      :init="init"
-      :disabled="disabled"
-      @init="handleInit"
-      @change="(event, editor) => $emit('change', event, editor)"
-      @blur="(event, editor) => $emit('blur', event, editor)"
+      tinymceScriptSrc="/vendor/tinymce/tinymce.min.js"
+      :init="config"
+      v-bind="$attrs"
     />
   </div>
 </template>

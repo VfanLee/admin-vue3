@@ -1,9 +1,9 @@
-<script setup name="fullcalendarView">
+<script setup lang="ts">
 import Fullcalendar from '@/components/Fullcalendar/index.vue'
 </script>
 
 <template>
-  <div class="example-page">
+  <div class="components-page">
     <Fullcalendar />
   </div>
 </template>
