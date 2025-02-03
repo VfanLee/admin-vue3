@@ -34,18 +34,3 @@ defineProps<{ data: RouteMenus }>()
     <span>{{ data.text }}</span>
   </el-menu-item>
 </template>
-
-<style lang="scss">
-.el-menu-item,
-.el-sub-menu__title {
-  margin: 4px 4px 0;
-  border-radius: 8px;
-  user-select: none;
-
-  &:hover,
-  &.is-active {
-    background-color: rgba(0, 0, 0, 0.04);
-    color: var(--el-text-color-primary);
-  }
-}
-</style>

@@ -18,6 +18,7 @@ const routeMenus = computed(() => generateRouteMenus(routeMenusStore.routes))
 <template>
   <el-menu
     class="sidebar-menu"
+    popperClass="sidebar-memu--popper"
     router
     :default-active="$route.fullPath"
     :collapse="appStore.collapse"
@@ -27,9 +28,3 @@ const routeMenus = computed(() => generateRouteMenus(routeMenusStore.routes))
     <SidebarMenuItem v-for="item in routeMenus" :key="item.id" :data="item" />
   </el-menu>
 </template>
-
-<style lang="scss">
-.sidebar-menu {
-  border-inline-end-width: 0px;
-}
-</style>

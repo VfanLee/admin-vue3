@@ -5,7 +5,7 @@
   --vat-border-color: rgba(5, 5, 5, 0.06);
 
   &.is-sidebar--collapse {
-    --vat-sidebar-width: calc(64px + 1px);
+    --vat-sidebar-width: calc(56px + 16px + 1px);
   }
 }
 
@@ -41,7 +41,6 @@
     width: var(--vat-sidebar-width);
     height: calc(100% - var(--vat-header-height));
     border-inline-end: 1px solid var(--vat-border-color);
-    backdrop-filter: blur(8px);
   }
 }
 
