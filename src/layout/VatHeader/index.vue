@@ -3,7 +3,7 @@ import UserInfo from './components/UserInfo.vue'
 </script>
 
 <template>
-  <header class="vat-header"></header>
+  <div class="vat-header"></div>
   <header class="vat-header vat-header--fixed">
     <div class="vat-header__inner">
       <Logo size="small" />

@@ -4,7 +4,7 @@ import SidebarCollapseButton from './components/SidebarCollapseButton.vue'
 </script>
 
 <template>
-  <aside class="vat-sidebar"></aside>
+  <div class="vat-sidebar"></div>
   <aside class="vat-sidebar vat-sidebar--fixed">
     <div class="vat-sidebar__inner">
       <SidebarMenu />
@@ -14,13 +14,14 @@ import SidebarCollapseButton from './components/SidebarCollapseButton.vue'
 </template>
 
 <style lang="scss">
-.vat-sidebar__inner {
+.vat-sidebar {
   --el-menu-bg-color: transparent;
   --el-menu-item-height: 40px;
   --el-menu-sub-item-height: 40px;
 
-  overflow: hidden auto;
-  height: 100%;
-  font-size: 14px;
+  .vat-sidebar__inner {
+    overflow: hidden auto;
+    height: 100%;
+  }
 }
 </style>

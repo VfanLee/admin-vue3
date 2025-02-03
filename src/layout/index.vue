@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import './index.scss'
+
 import VatSidebar from './VatSidebar/index.vue'
 import VatHeader from './VatHeader/index.vue'
 import VatContent from './VatContent/index.vue'

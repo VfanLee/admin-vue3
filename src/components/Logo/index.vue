@@ -35,9 +35,10 @@ const { size = 'default' } = defineProps<LogoProps>()
     gap: 8px;
     height: 40px;
     line-height: 40px;
+
     .logo-text {
-      font-size: 33px;
-      font-weight: bold;
+      font-size: 32px;
+      font-weight: 700;
     }
   }
 
@@ -45,9 +46,10 @@ const { size = 'default' } = defineProps<LogoProps>()
     gap: 6px;
     height: 32px;
     line-height: 32px;
+
     .logo-text {
       font-size: 18px;
-      font-weight: bold;
+      font-weight: 600;
     }
   }
 }
