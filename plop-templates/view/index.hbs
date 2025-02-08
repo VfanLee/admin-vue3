@@ -1,0 +1,21 @@
+{{#if script}}
+<script setup lang="ts">
+defineOptions({
+  name: '{{ pascalCase name }}View',
+})
+</script>
+{{/if}}
+
+{{#if template}}
+<template>
+  <div class="{{ kebabCase name }}-view">
+    {{ pascalCase name }} View
+  </div>
+</template>
+{{/if}}
+
+{{#if style}}
+<style lang="scss" scoped>
+
+</style>
+{{/if}}
