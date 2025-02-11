@@ -45,7 +45,7 @@ export default {
     const actions = [
       {
         type: 'add',
-        path: `src/views/${pathName}/index.vue`,
+        path: `src/views/${pathName}/${pathName}.vue`,
         templateFile: 'plop-templates/view/index.hbs',
         data: {
           name,
