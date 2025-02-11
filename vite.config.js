@@ -1,5 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
-import { resolve } from 'node:path'
+import { resolve, basename } from 'node:path'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -23,7 +23,26 @@ export default defineConfig(({ command, mode }) => ({
     sourcemap: false,
     chunkSizeWarningLimit: Infinity,
     // https://cn.rollupjs.org/configuration-options/
-    rollupOptions: {},
+    rollupOptions: {
+      output: {
+        chunkFileNames({ name }) {
+          if (name.startsWith('lang/')) {
+            return '[name].js'
+          } else {
+            return `[name]-[hash].js`
+          }
+        },
+        manualChunks(id) {
+          if (id.includes('element-plus')) {
+            return 'vendor.element-plus'
+          }
+          if (id.includes('i18n/lang')) {
+            const name = basename(id, '.ts')
+            return `lang/${name}`
+          }
+        },
+      },
+    },
   },
   plugins: [
     vue(),

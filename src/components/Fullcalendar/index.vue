@@ -10,7 +10,7 @@ const calendarId = ref('calendar-' + +new Date() + Math.round(Math.random() * 10
 
 onMounted(() => {
   const calendarEl = document.querySelector('#' + calendarId.value)
-  let calendar = new Calendar(calendarEl, {
+  let calendar = new Calendar(calendarEl as HTMLElement, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin],
     initialView: 'dayGridMonth',
     headerToolbar: {
