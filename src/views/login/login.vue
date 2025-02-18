@@ -3,7 +3,7 @@ import type { FormInstance, FormItemInstance } from 'element-plus'
 import VatFooter from '@/layout/VatFooter/index.vue'
 
 import { useUserStore } from '@/stores/user'
-import { debounce } from 'lodash'
+import { debounce } from 'lodash-es'
 
 const userStore = useUserStore()
 

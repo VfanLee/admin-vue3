@@ -1,4 +1,4 @@
-import { isEmpty } from 'lodash'
+import { isEmpty } from 'lodash-es'
 import { useUserStore } from '@/stores/user'
 import { useRouteStore } from '@/stores/route'
 import router from '@/router'

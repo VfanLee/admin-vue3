@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
 import { getCacheLang } from '@/utils/lang'
-import zh from './lang/zh'
-import en from './lang/en'
+import zh from './locales/zh'
+import en from './locales/en'
 
 const messages = {
   zh,

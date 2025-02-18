@@ -1,5 +1,5 @@
 import type { AppRouteItem, RouteMenus } from '@/router/routes'
-import { isEmpty, isNil } from 'lodash'
+import { isEmpty, isNil } from 'lodash-es'
 
 export function filterAsyncRoutes(routes: AppRouteItem[]): AppRouteItem[] {
   const res: AppRouteItem[] = []

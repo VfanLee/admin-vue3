@@ -4,6 +4,6 @@
     "vite.config.js": "vitest.config.*, cypress.config.*, playwright.config.*",
     "jsconfig.json": "tsconfig.*.json",
     "tsconfig.json": "tsconfig.*.json",
-    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig"
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, plopfile*"
   }
 }

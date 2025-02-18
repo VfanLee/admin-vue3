@@ -26,7 +26,7 @@ export default defineConfig(({ command, mode }) => ({
     rollupOptions: {
       output: {
         chunkFileNames({ name }) {
-          if (name.startsWith('lang/')) {
+          if (name.startsWith('locales/')) {
             return '[name].js'
           } else {
             return `[name]-[hash].js`
@@ -36,9 +36,9 @@ export default defineConfig(({ command, mode }) => ({
           if (id.includes('element-plus')) {
             return 'vendor.element-plus'
           }
-          if (id.includes('i18n/lang')) {
+          if (id.includes('i18n/locales')) {
             const name = basename(id, '.ts')
-            return `lang/${name}`
+            return `locales/${name}`
           }
         },
       },
