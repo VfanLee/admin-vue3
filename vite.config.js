@@ -34,9 +34,22 @@ export default defineConfig(({ command, mode }) => ({
           }
         },
         manualChunks(id) {
-          if (id.includes('element-plus')) {
-            return 'vendor.element-plus'
+          // vendor
+          const packageMap = {
+            '@vue': 'vendor-vue',
+            'element-plus': 'vendor-element-plus',
           }
+          for (const [pkg, chunkName] of Object.entries(packageMap)) {
+            if (id.includes(`/node_modules/${pkg}/`)) {
+              return chunkName
+            }
+          }
+          if (id.includes('node_modules')) {
+            console.log('@node_modules', id)
+            return 'vendor'
+          }
+
+          // locales
           if (id.includes('i18n/locales')) {
             const name = basename(id, '.ts')
             return `locales/${name}`
@@ -50,18 +63,24 @@ export default defineConfig(({ command, mode }) => ({
     vueJsx(),
     vueDevtools(),
     AutoImport({
-      // 自动生成类型文件
+      // 自动生成类型声明文件
       dts: 'types/auto-imports.d.ts',
-      // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-      imports: ['vue'],
-      // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
-      resolvers: [ElementPlusResolver()],
+      imports: [
+        // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+        'vue',
+      ],
+      resolvers: [
+        // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+        ElementPlusResolver(),
+      ],
     }),
     Components({
-      // 自动生成类型文件
+      // 自动生成类型声明文件
       dts: 'types/components.d.ts',
-      // 自动导入 Element Plus 组件
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        // 自动导入 Element Plus 组件
+        ElementPlusResolver(),
+      ],
     }),
     // https://github.com/vbenjs/vite-plugin-svg-icons
     createSvgIconsPlugin({
@@ -69,18 +88,19 @@ export default defineConfig(({ command, mode }) => ({
       symbolId: 'icon-[name]',
     }),
     // https://github.com/vbenjs/vite-plugin-compression#options
-
+    // gzip 压缩
     viteCompression({
-      algorithm: 'gzip', // gzip
+      algorithm: 'gzip',
       ext: '.gz',
-      threshold: 102400,
+      threshold: 10240,
       filter: (file) => /\.(js|mjs|json|css|html|svg)$/.test(file),
       deleteOriginFile: false,
     }),
+    // brotli 压缩
     viteCompression({
-      algorithm: 'brotliCompress', // brotli
+      algorithm: 'brotliCompress',
       ext: '.br',
-      threshold: 102400,
+      threshold: 10240,
       filter: (file) => /\.(js|mjs|json|css|html|svg)$/.test(file),
       deleteOriginFile: false,
     }),
