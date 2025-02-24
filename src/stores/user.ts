@@ -40,8 +40,12 @@ export const useUserStore = defineStore('user', () => {
 
   const getUserInfo = async () => {
     const res = await reqUserInfo()
-    userInfo.value = res.result
-    return userInfo
+    if (res.code === 200) {
+      userInfo.value = res.result
+      return userInfo
+    } else {
+      logout()
+    }
   }
 
   const getMenus = async () => {
@@ -54,11 +58,6 @@ export const useUserStore = defineStore('user', () => {
     cookie.removeAll()
 
     router.replace({ name: 'login', query: { redirect: router.currentRoute.value.fullPath } })
-    ElNotification({
-      type: 'success',
-      message: '登出成功',
-      duration: 3000,
-    })
   }
 
   return {

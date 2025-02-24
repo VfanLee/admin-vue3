@@ -9,6 +9,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import viteCompression from 'vite-plugin-compression'
 
 // https://cn.vitejs.dev/config/
 export default defineConfig(({ command, mode }) => ({
@@ -66,6 +67,22 @@ export default defineConfig(({ command, mode }) => ({
     createSvgIconsPlugin({
       iconDirs: [resolve(process.cwd(), 'src/icons')],
       symbolId: 'icon-[name]',
+    }),
+    // https://github.com/vbenjs/vite-plugin-compression#options
+
+    viteCompression({
+      algorithm: 'gzip', // gzip
+      ext: '.gz',
+      threshold: 102400,
+      filter: (file) => /\.(js|mjs|json|css|html|svg)$/.test(file),
+      deleteOriginFile: false,
+    }),
+    viteCompression({
+      algorithm: 'brotliCompress', // brotli
+      ext: '.br',
+      threshold: 102400,
+      filter: (file) => /\.(js|mjs|json|css|html|svg)$/.test(file),
+      deleteOriginFile: false,
     }),
   ],
 }))

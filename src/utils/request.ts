@@ -2,7 +2,8 @@ import axios from 'axios'
 import { useUserStore } from '@/stores/user'
 
 const request = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  // baseURL: 'https://example.com/api',
+  timeout: 3000,
 })
 
 request.interceptors.request.use(

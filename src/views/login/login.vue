@@ -44,13 +44,7 @@ const login = debounce(async (formEl: FormInstance | null) => {
 <template>
   <div class="login-page">
     <div class="login-form__wrapper">
-      <el-form
-        ref="loginFormRef"
-        class="login-form"
-        :model="loginForm"
-        :rules="loginFormRule"
-        :disabled="loading"
-      >
+      <el-form ref="loginFormRef" class="login-form" :model="loginForm" :rules="loginFormRule" :disabled="loading">
         <el-form-item class="login-logo">
           <Logo />
         </el-form-item>
@@ -59,7 +53,7 @@ const login = debounce(async (formEl: FormInstance | null) => {
           <el-input
             class="login__username"
             v-model="loginForm.username"
-            placeholder="请输入用户名（admin, visitor）"
+            placeholder="请输入用户名（admin, guest）"
             autofocus
             @keyup.enter="login(loginFormRef)"
           >
@@ -84,14 +78,7 @@ const login = debounce(async (formEl: FormInstance | null) => {
         </el-form-item>
 
         <el-form-item>
-          <el-button
-            class="login-btn"
-            type="primary"
-            @click="login(loginFormRef)"
-            :loading="loading"
-          >
-            登录
-          </el-button>
+          <el-button class="login-btn" type="primary" @click="login(loginFormRef)" :loading="loading">登录</el-button>
         </el-form-item>
       </el-form>
     </div>

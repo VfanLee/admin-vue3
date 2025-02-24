@@ -1,26 +1,35 @@
-import request from '@/utils/request'
+import { login, userInfo } from '@/mock'
 
-interface LoginResponse {
+type DataResponse = Promise<{
   code: number
   message: string
   result?: any
+}>
+
+export const reqLogin = (data: { username: string; password: string }): DataResponse => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(login(data))
+    }, 500)
+  })
 }
 
-export const reqLogin = (data: { username: string; password: string }) =>
-  request({
-    url: '/user/login',
-    method: 'POST',
-    data,
-  }) as Promise<LoginResponse>
+export const reqUserInfo = (): DataResponse => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(userInfo())
+    }, 500)
+  })
+}
 
-export const reqUserInfo = () =>
-  request({
-    url: '/user/info',
-    method: 'GET',
-  }) as Promise<LoginResponse>
-
-export const reqUserMenuCode = () =>
-  request({
-    url: '/user/menu',
-    method: 'GET',
-  }) as Promise<LoginResponse>
+// export const reqUserMenuCode = () => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve({
+//         code: 200,
+//         message: 'success',
+//         result: 'admin',
+//       })
+//     }, 500)
+//   })
+// }
