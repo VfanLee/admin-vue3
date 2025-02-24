@@ -1,11 +1,14 @@
 import { createI18n } from 'vue-i18n'
 import { getCacheLang } from '@/utils/lang'
-import zh from './locales/zh'
-import en from './locales/en'
 
-const messages = {
-  zh,
-  en,
+const messages: Record<string, any> = {}
+
+const locales: Record<string, { default: string }> = import.meta.glob('./locales/*.ts', { eager: true })
+for (const path in locales) {
+  if (Object.prototype.hasOwnProperty.call(locales, path)) {
+    const locale = locales[path]
+    messages[path.match(/\.\/locales\/(.*)\.ts$/)![1]] = locale.default
+  }
 }
 
 function getDefaultLang() {
@@ -27,7 +30,7 @@ const i18n = createI18n({
   legacy: false,
   globalInjection: true,
   locale: getDefaultLang(),
-  fallbackLocale: 'zh',
+  fallbackLocale: 'en',
   messages,
 })
 
