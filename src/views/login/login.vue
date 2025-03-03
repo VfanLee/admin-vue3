@@ -93,7 +93,7 @@ const login = debounce(async (formEl: FormInstance | null) => {
   justify-content: space-between;
   height: 100vh;
   overflow: hidden;
-  background-image: url('/images/bg.png');
+  background-image: linear-gradient(45deg, #fff 0%, #fff 55%, rgba(0, 0, 255, 0.1), rgba(128, 0, 128, 0.1), #fff 95%);
 }
 
 .login-form__wrapper {

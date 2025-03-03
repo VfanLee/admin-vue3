@@ -7,7 +7,7 @@ export const components: AppRouteItem = {
   component: Layout,
   meta: {
     title: '组件',
-    icon: 'cube',
+    icon: 'app-store',
   },
   alwaysShow: true,
   redirect: '/components/richtext',
@@ -18,7 +18,7 @@ export const components: AppRouteItem = {
       component: () => import('@/views/components/richtext.vue'),
       meta: {
         title: '富文本',
-        icon: 'cube',
+        // icon: 'cube',
       },
     },
     {
@@ -27,7 +27,7 @@ export const components: AppRouteItem = {
       component: () => import('@/views/components/marked.vue'),
       meta: {
         title: 'Markdown',
-        icon: 'cube',
+        // icon: 'cube',
       },
     },
     {
@@ -36,7 +36,7 @@ export const components: AppRouteItem = {
       component: () => import('@/views/components/fullcalendar.vue'),
       meta: {
         title: '日历',
-        icon: 'cube',
+        // icon: 'cube',
       },
     },
   ],

@@ -7,7 +7,7 @@ export const nested: AppRouteItem = {
   component: Layout,
   meta: {
     title: '路由嵌套',
-    icon: 'cube',
+    icon: 'menu',
   },
   redirect: '/nested/menu1',
   children: [
@@ -17,7 +17,7 @@ export const nested: AppRouteItem = {
       component: () => import('@/views/nested/menu1/menu1.vue'),
       meta: {
         title: '菜单 1',
-        icon: 'cube',
+        // icon: 'cube',
       },
       redirect: '/nested/menu1/menu1-1',
       children: [
@@ -27,7 +27,7 @@ export const nested: AppRouteItem = {
           component: () => import('@/views/nested/menu1/menu1-1/menu1-1.vue'),
           meta: {
             title: '菜单 1-1',
-            icon: 'cube',
+            // icon: 'cube',
           },
         },
         {
@@ -36,7 +36,7 @@ export const nested: AppRouteItem = {
           component: () => import('@/views/nested/menu1/menu1-2/menu1-2.vue'),
           meta: {
             title: '菜单 1-2',
-            icon: 'cube',
+            // icon: 'cube',
           },
           redirect: '/nested/menu1/menu1-2/menu1-2-1',
           children: [
@@ -46,7 +46,7 @@ export const nested: AppRouteItem = {
               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1/menu1-2-1.vue'),
               meta: {
                 title: '菜单 1-2-1',
-                icon: 'cube',
+                // icon: 'cube',
               },
             },
             {
@@ -55,7 +55,7 @@ export const nested: AppRouteItem = {
               component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2/menu1-2-2.vue'),
               meta: {
                 title: '菜单 1-2-2',
-                icon: 'cube',
+                // icon: 'cube',
               },
             },
           ],
@@ -66,7 +66,7 @@ export const nested: AppRouteItem = {
           component: () => import('@/views/nested/menu1/menu1-3/menu1-3.vue'),
           meta: {
             title: '菜单 1-3',
-            icon: 'cube',
+            // icon: 'cube',
           },
         },
       ],
@@ -77,7 +77,7 @@ export const nested: AppRouteItem = {
       component: () => import('@/views/nested/menu2/menu2.vue'),
       meta: {
         title: '菜单 2',
-        icon: 'cube',
+        // icon: 'cube',
       },
     },
   ],

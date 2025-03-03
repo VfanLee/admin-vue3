@@ -30,7 +30,7 @@ export const constantRoutes: AppRouteItem[] = [
         component: () => import('@/views/dashboard/dashboard.vue'),
         meta: {
           title: '仪表盘',
-          icon: 'cube',
+          icon: 'dashboard',
         },
       },
     ],

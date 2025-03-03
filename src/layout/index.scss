@@ -79,6 +79,16 @@
 .vat-footer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 14px;
   align-items: center;
+  justify-content: center;
+  padding: 28px;
+  .vat-footer__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--el-text-color-regular);
+  }
+  .vat-footer__copyright {
+  }
 }

@@ -18,7 +18,7 @@
     "email": "fanfanfafafa@gmail.com",
     "url": "https://github.com/vfanlee"
   },
-  "packageManager": "pnpm@10.4.1",
+  "packageManager": "pnpm@10.5.2",
   "engines": {
     "node": "22.x"
   },
@@ -39,7 +39,6 @@
     "lodash-es": "^4.17.21",
     "marked": "^12.0.2",
     "mockjs": "^1.1.0",
-    "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "path-browserify": "^1.0.1",
     "pinia": "^2.3.1",

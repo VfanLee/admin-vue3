@@ -18,7 +18,7 @@ export const asyncRoutes: AppRouteItem[] = [
     alwaysShow: true,
     meta: {
       title: '错误页',
-      icon: 'cube',
+      icon: 'error',
     },
     children: [
       {
@@ -27,7 +27,7 @@ export const asyncRoutes: AppRouteItem[] = [
         component: () => import('@/views/error/404.vue'),
         meta: {
           title: '404',
-          icon: 'cube',
+          // icon: 'error',
         },
       },
     ],

@@ -5,5 +5,10 @@
     "jsconfig.json": "tsconfig.*.json",
     "tsconfig.json": "tsconfig.*.json",
     "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, plopfile*"
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "src/i18n",
+    "src/i18n/locales",
+    "public/libs/tinymce/plugins/help/js/i18n"
+  ]
 }
