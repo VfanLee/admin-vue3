@@ -27,7 +27,7 @@ export const constantRoutes: AppRouteItem[] = [
       {
         path: '/dashboard',
         name: 'dashboard-index',
-        component: () => import('@/views/dashboard/dashboard.vue'),
+        component: () => import('@/views/dashboard/index.vue'),
         meta: {
           title: '仪表盘',
           icon: 'dashboard',

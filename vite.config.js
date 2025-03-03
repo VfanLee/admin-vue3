@@ -38,6 +38,7 @@ export default defineConfig(({ command, mode }) => ({
           const packageMap = {
             '@vue': 'vendor-vue',
             'element-plus': 'vendor-element-plus',
+            'echarts': 'vendor-echarts',
           }
           for (const [pkg, chunkName] of Object.entries(packageMap)) {
             if (id.includes(`/node_modules/${pkg}/`)) {

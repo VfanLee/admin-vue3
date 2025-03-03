@@ -3,15 +3,13 @@ defineOptions({
   name: 'SvgIcon',
 })
 
-interface SvgIconProps {
+defineProps<{
   name: string
-}
-
-defineProps<SvgIconProps>()
+}>()
 </script>
 
 <template>
-  <el-icon class="svg-icon">
+  <el-icon class="svg-icon" v-bind="$attrs">
     <svg aria-hidden="true">
       <use :xlink:href="`#icon-${name}`"></use>
     </svg>
